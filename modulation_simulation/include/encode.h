@@ -1,8 +1,6 @@
+#include "iq.h"
+
 #pragma once
 
-typedef struct {
-    float i;
-    float q;
-} iq_t;
-
 iq_t **encode_str(char *);
+void free_encoded_samples(iq_t **);

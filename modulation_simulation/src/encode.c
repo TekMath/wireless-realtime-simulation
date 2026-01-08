@@ -27,6 +27,23 @@ static iq_t *encode_byte(uint8_t byte)
 }
 
 /**
+ * @brief Free encoded IQ samples
+ * @param samples The encoded IQ samples to free
+ */
+void free_encoded_samples(iq_t **samples)
+{
+    if (samples == NULL)
+        return;
+
+    for (size_t i = 0; samples[i] != NULL; i++)
+    {
+        free(samples[i]);
+    }
+
+    free(samples);
+}
+
+/**
  * @brief Encode a string to IQ samples
  * (byte array to iq_t array)
  * @param string The original string to encode
