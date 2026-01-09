@@ -3,6 +3,7 @@
 
 #include "encode.h"
 #include "noise.h"
+#include "decode.h"
 
 int main()
 {
@@ -15,7 +16,11 @@ int main()
         printf("Symbol %zu: I = %f, Q = %f\n", i, encoded_samples[i]->i, encoded_samples[i]->q);
     }
 
-    float noise_sigma = 0.5f;
+    char *decoded_string = decode_iqs(encoded_samples);
+    printf("Decoded string: %s\n", decoded_string);
+    free(decoded_string);
+
+    float noise_sigma = 0.02f;
     add_noise_to_samples(encoded_samples, noise_sigma);
 
     // Debug
@@ -23,6 +28,10 @@ int main()
     {
         printf("Symbol %zu: I = %f, Q = %f\n", i, encoded_samples[i]->i, encoded_samples[i]->q);
     }
+
+    decoded_string = decode_iqs(encoded_samples);
+    printf("Decoded string: %s\n", decoded_string);
+    free(decoded_string);
 
     free_encoded_samples(encoded_samples);
 
