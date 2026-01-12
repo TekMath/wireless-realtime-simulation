@@ -8,7 +8,8 @@ MAIN 	=		main.c
 SRC		=		src/encode.c \
 				src/noise.c \
 				src/decode.c \
-				src/debug.c
+				src/debug.c \
+				src/export.c
 
 OBJ		=		$(SRC:.c=.o) $(MAIN:.c=.o)
 

@@ -3,44 +3,11 @@
 #include <string.h>
 
 #include "debug.h"
-/* int main()
-{
-    char *test_string = "MOBILE COMMUNICATION PROTOCOLS";
-    iq_t **encoded_samples = encode_str(test_string);
+#include "export.h"
 
-    // Debug
-    for (size_t i = 0; encoded_samples[i] != NULL; i++)
-    {
-        printf("Symbol %zu: I = %f, Q = %f\n", i, encoded_samples[i]->i, encoded_samples[i]->q);
-    }
-
-    char *decoded_string = decode_iqs(encoded_samples);
-    printf("Decoded string: %s\n", decoded_string);
-    free(decoded_string);
-
-    float noise_sigma = 0.02f;
-    add_noise_to_samples(encoded_samples, noise_sigma);
-
-    // Debug
-    for (size_t i = 0; encoded_samples[i] != NULL; i++)
-    {
-        printf("Symbol %zu: I = %f, Q = %f\n", i, encoded_samples[i]->i, encoded_samples[i]->q);
-    }
-
-    decoded_string = decode_iqs(encoded_samples);
-    printf("Decoded string: %s\n", decoded_string);
-    free(decoded_string);
-
-    free_encoded_samples(encoded_samples);
-
-    return 0;
-}
- */
-
-// Argument format: <mode> <test_string> <noise_sigma>
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
+    if (argc < 3)
     {
         fprintf(stderr, "Usage: %s <mode> <test_string>\n", argv[0]);
         return EXIT_FAILURE;
@@ -64,6 +31,8 @@ int main(int argc, char *argv[])
         }
 
         float noise_sigma = strtof(argv[3], NULL);
+
+        export_iq_csv_from_string(test_string, noise_sigma);
 
         return EXIT_SUCCESS;
     }
