@@ -50,7 +50,7 @@ void free_encoded_samples(iq_t **samples)
  * @param string The original string to encode
  * @return iq_t** The encoded IQ samples
  */
-iq_t **encode_str(char *string)
+iq_t **encode_str(const char *string)
 {
     size_t string_length = strlen(string);
     iq_t **iq_samples = malloc(string_length * sizeof(iq_t *) + 1);

@@ -2,4 +2,4 @@
 
 #pragma once
 
-void add_noise_to_samples(iq_t **, float);
+iq_t **add_noise_to_samples(iq_t **, float);
